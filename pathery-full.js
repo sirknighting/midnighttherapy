@@ -6,7 +6,7 @@ var Therapist  = {};
 if (typeof mt_local_testing === 'undefined') {
   var mt_url = 'https://pathery-code.terminal.com/'
 } else {
-  var mt_url = 'http://127.0.0.1:2222/';
+  var mt_url = 'https://rawgit.com/sirknighting/midnighttherapy/sirknighting-test-1/pathery-full.js';
 }
 
 var start_assist = function() {
