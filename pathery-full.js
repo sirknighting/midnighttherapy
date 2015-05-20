@@ -1,5 +1,5 @@
 // NOTE: set mt_local_testing to use local version
-
+var mt_local_testing=true;
 // globals all mentioned here
 var Analyst  = {};
 var Therapist  = {};
