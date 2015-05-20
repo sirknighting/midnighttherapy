@@ -1,12 +1,11 @@
 // NOTE: set mt_local_testing to use local version
-var mt_local_testing=true;
 // globals all mentioned here
 var Analyst  = {};
 var Therapist  = {};
 if (typeof mt_local_testing === 'undefined') {
   var mt_url = 'https://pathery-code.terminal.com/'
 } else {
-  var mt_url = 'https://rawgit.com/sirknighting/midnighttherapy/sirknighting-test-4/';
+  var mt_url = 'http://127.0.0.1:2222/';
 }
 
 var start_assist = function() {
