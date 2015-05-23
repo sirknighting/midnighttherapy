@@ -15,7 +15,7 @@
 var is_mapeditor = ($('#playableMapDisplay').length > 0)
 var is_ugli = (typeof pathery_ugli != 'undefined');
 var is_main = (!is_ugli) && (!is_mapeditor);
-var chat_frame=null;
+
 function loadScripts(array,callback){
   var loader = function(src,handler){
     var script = document.createElement("script");
@@ -943,14 +943,7 @@ function click_block(mapid, block)  {
   $("#" + id).click();
 }
 function toggle_chat(){
-	if(chat_frame){
-		if(document.getElementById('chatArea').style.display!='none'){
-			document.getElementById('chatArea').style.display='none';
-		}
-		else{
-			document.getElementById('chatArea').style.display='block';	
-		}
-	}
+	$('#chatArea').toggle()
 }
 ////////////////////////////////////////////
 // HOTKEYS
@@ -972,7 +965,7 @@ var MAP_SWITCH_KEY_1      = '1'
   , TOGGLE_BLOCK_KEY      = 'X'
   , PAINT_BLOCK_KEY       = 'W'
   , ERASE_KEY             = 'E'
-  , TOGGLE_CHAT_KEY	  = 'C'
+  , TOGGLE_CHAT_KEY	  = 'T'
 ;
 
 var hotkeys_list = [
@@ -1053,9 +1046,6 @@ register_hotkey(UNDO_KEY, function(e) {
     undo_move_history(get_mapid());
 });
 
-register_hotkey(TOGGLE_CHAT_KEY, function(e){
-	toggle_chat();
-});
 var shiftkey_held = false;
 var controlkey_held = false;
 var paintkey_held = false;
@@ -1231,7 +1221,7 @@ function initialize_toolbar() {
   if (!is_ugli) {
     //button_toolbar.append($('<div>').text('Chat').css({'text-align':'center', 'background-color':'black', 'width':'100%', 'margin-top':'20px'}))
 
-    chat_frame =
+    var chat_frame =
       $('<div>').addClass('chatContainer2').attr('id','chatArea')
         .append($('<div>').attr('id','chatContainer'))
         .append($('<form>').attr({'id':'sendChat', 'onsubmit':'return false'})
@@ -1245,7 +1235,7 @@ function initialize_toolbar() {
 
 
     button_toolbar.append(chat_frame);
-
+    register_hotkey(TOGGLE_CHAT_KEY, toggle_chat);
     $.getScript(mt_url + 'src/chat.js');
 
     $("<link/>", { rel: "stylesheet", type: "text/css",
